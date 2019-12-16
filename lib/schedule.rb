@@ -18,7 +18,6 @@ class Schedule
     num = self.water_after
     date = all_dates[num]
     watering_dates = [all_dates.first]
-    binding.pry
 
     loop do
       if weekends.include?(date)
@@ -26,13 +25,20 @@ class Schedule
         if weekends.include?(new_date)
           watering_dates << all_dates[num - 1]
         else
-          watering_dates << all_dates[num]
+          watering_dates << date
         end
       else
         watering_dates << date
       end
+
+      if num > all_dates.count
+        break
+      end
+
+      num += 3
     end
 
+    puts watering_dates
   end
 
   def print_schedule
