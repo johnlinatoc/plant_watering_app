@@ -1,25 +1,15 @@
 require 'date'
 
 class Calendar
-  def start_date
-    start = Date.new(2019, 12, 16)
-    start
-  end
-
-  def end_date
-    start_date + 84
-  end
 
   def all_dates
+    start_date = Date.new(2019, 12, 16)
     dates_array = []
     num = 0
 
-    loop do
+    until num >= 84 do
       dates_array << start_date + num
       num+=1
-      if num >= 84
-        break
-      end
     end
 
     dates_array

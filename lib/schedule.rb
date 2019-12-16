@@ -30,7 +30,6 @@ class Schedule
       if weekends.include?(date)
           num += 1
           new_date = all_dates[num]
-
           if weekends.include?(new_date)
             num -=  2
             new_date = all_dates[num]
@@ -47,13 +46,13 @@ class Schedule
       date = all_dates[num]
     end
 
-    final_dates
+    final_dates[0...-1]
   end
 
   def self.print_schedules
     Schedule.all.each do |sched|
       name = sched.plant.name
-      dates = sched.watering_dates.map {|d| d.to_s}[0...-1].join(", \n")
+      dates = sched.watering_dates.map {|d| d.to_s}.join(", \n")
 
       File.open("schedules.txt", 'a') { |f| f << "You need to water '#{name}' on:\n#{dates}\n\n" }
     end
