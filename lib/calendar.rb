@@ -9,7 +9,7 @@ class Calendar
 
     until num >= 84 do
       dates_array << start_date + num
-      num+=1
+      num += 1
     end
 
     dates_array
@@ -19,6 +19,7 @@ class Calendar
     weekends_array = all_dates.select do |day|
        day.saturday? || day.sunday?
     end
+    
     weekends_array
   end
 
