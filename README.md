@@ -13,8 +13,8 @@
   <!-- o create weekdays array/weekends array method -->
 
 - Create schedule
-  o plant instance
-  o calendar instance
+  <!-- o plant instance
+  o calendar instance -->
 
   o all dates possible - based off 'water_after' method
     - create array of possible points

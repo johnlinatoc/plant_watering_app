@@ -6,6 +6,10 @@ class Calendar
     start
   end
 
+  def end_date
+    start_date + 84
+  end
+
   def all_dates
     dates_array = []
     num = 0
@@ -21,12 +25,12 @@ class Calendar
     dates_array
   end
 
-  def weekdays
-    weekdays_array = all_dates.select do |day|
-       day.monday? || day.tuesday? || day.wednesday? || day.thursday? || day.friday?
-    end
-    weekdays_array
-  end
+  # def weekdays
+  #   weekdays_array = all_dates.select do |day|
+  #      day.monday? || day.tuesday? || day.wednesday? || day.thursday? || day.friday?
+  #   end
+  #   weekdays_array
+  # end
 
   def weekends
     weekends_array = all_dates.select do |day|
