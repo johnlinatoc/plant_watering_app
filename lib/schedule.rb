@@ -17,28 +17,30 @@ class Schedule
     weekends = self.calendar.weekends
     num = self.water_after
     date = all_dates[num]
-    watering_dates = [all_dates.first]
+    final_dates = [all_dates.first]
 
-    loop do
+    until num > all_dates.count do
       if weekends.include?(date)
-        new_date = date + 1
-        if weekends.include?(new_date)
-          watering_dates << all_dates[num - 1]
-        else
-          watering_dates << date
-        end
+          num += 1
+          new_date = all_dates[num]
+
+          if weekends.include?(new_date)
+            num -=  2
+            new_date = all_dates[num]
+            final_dates << new_date
+          else
+            final_dates << new_date
+            date = new_date
+          end
       else
-        watering_dates << date
+        final_dates << all_dates[num]
       end
 
-      if num > all_dates.count
-        break
-      end
-
-      num += 3
+      num += self.water_after
+      date = all_dates[num]
     end
 
-    puts watering_dates
+    final_dates
   end
 
   def print_schedule
@@ -46,4 +48,4 @@ class Schedule
 end
 
 a = Schedule.new(plant: Plant.new(water_after: 3), calendar: Calendar.new)
-puts a.watering_dates
+a.print_schedule
